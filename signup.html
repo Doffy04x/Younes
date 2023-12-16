@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up </title>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+
+    <!-- Font Icon and Main css -->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="main">
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Sign up</h2>
+                        <form method="POST" class="register-form" id="register-form">
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="name" id="name" placeholder="Your Name"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <input type="email" name="email" id="email" placeholder="Your Email"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="pass" id="pass" placeholder="Password"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                                <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term"  />
+                                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="images/signup-image.jpg" alt="sing up image"></figure>
+                        <a href="index.html" class="signup-image-link">I am already member</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Firebase Configuration and Registration Script -->
+    <script>
+         var firebaseConfig = {
+            apiKey: "AIzaSyDs2gZJ6wIRDOqEtzyIT7toug3Xs3-_w1E",
+    authDomain: "user-7c7f8.firebaseapp.com",
+    projectId: "user-7c7f8",
+    storageBucket: "user-7c7f8.appspot.com",
+    messagingSenderId: "55544751979",
+    appId: "1:55544751979:web:40366cb78cb1cf8162ce2e",
+    measurementId: "G-FP9KRJ1GV3"
+};
+        firebase.initializeApp(firebaseConfig);
+
+        document.getElementById('register-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    var email = document.querySelector('input[name="email"]').value;
+    var password = document.querySelector('input[name="pass"]').value;
+
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then(function() {
+        // Show success message box and set a callback for redirection
+        showMessage('Registration successful!', 'success', function() {
+            window.location.href = 'index.html';
+        });
+    })
+    .catch(function(error) {
+        // Show error message box
+        showMessage('Registration failed: ' + error.message, 'error');
+    });
+});
+
+function showMessage(message, type, callback) {
+    // Remove existing message box if any
+    var existingBox = document.querySelector('.message-box');
+    if (existingBox) {
+        document.body.removeChild(existingBox);
+    }
+
+    // Create the message box element
+    var messageBox = document.createElement('div');
+    messageBox.className = 'message-box';
+
+    // Add content to the message box
+    var messageContent = document.createElement('p');
+    messageContent.textContent = message;
+    messageBox.appendChild(messageContent);
+
+    // Add a close button
+    var closeButton = document.createElement('button');
+    closeButton.textContent = 'Close';
+    messageBox.appendChild(closeButton);
+
+    // Append the message box to the body
+    document.body.appendChild(messageBox);
+
+    // Close button functionality
+    closeButton.onclick = function() {
+        document.body.removeChild(messageBox);
+        if (typeof callback === 'function') {
+            callback(); // Call the callback function
+        }
+    };
+}
+
+       
+
+    </script>
+
+    <!-- External JS -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

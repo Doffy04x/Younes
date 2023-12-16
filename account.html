@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Account Details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+    	body{margin-top:20px;
+background-color:#f2f6fc;
+color:#69707a;
+}
+.img-account-profile {
+    height: 10rem;
+}
+.rounded-circle {
+    border-radius: 50% !important;
+}
+.card {
+    box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
+}
+.card .card-header {
+    font-weight: 500;
+}
+.card-header:first-child {
+    border-radius: 0.35rem 0.35rem 0 0;
+}
+.card-header {
+    padding: 1rem 1.35rem;
+    margin-bottom: 0;
+    background-color: rgba(33, 40, 50, 0.03);
+    border-bottom: 1px solid rgba(33, 40, 50, 0.125);
+}
+.form-control, .dataTable-input {
+    display: block;
+    width: 100%;
+    padding: 0.875rem 1.125rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1;
+    color: #69707a;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #c5ccd6;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.35rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.nav-borders .nav-link.active {
+    color: #0061f2;
+    border-bottom-color: #0061f2;
+}
+.nav-borders .nav-link {
+    color: #69707a;
+    border-bottom-width: 0.125rem;
+    border-bottom-style: solid;
+    border-bottom-color: transparent;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+    </style>
+    </head>
+<body>
+<div class="container-xl px-4 mt-4">
+    <!-- Navigation Tabs -->
+    <nav class="nav nav-borders">
+        <a class="nav-link active ms-0" href="account.html">Profile</a>
+        <a class="nav-link" href="#">Other users</a>
+        <a class="nav-link" href="#">Security</a>
+        <button class="btn btn-secondary ms-2" id="signOutButton">Sign Out</button>
+        
+    </nav>
+    <hr class="mt-0 mb-4">
+
+    <!-- Profile Form -->
+    <form id="profile-form">
+        <!-- Profile Image Section -->
+        <div class="row mb-3">
+            <div class="col-xl-4">
+                <div class="card mb-4 mb-xl-0">
+                    <div class="card-header">Profile Picture</div>
+                    <div class="card-body text-center">
+                        <img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="" id="profile-image">
+                        <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                        <input type="file" id="profile-image-input" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Account Details Section -->
+            <div class="col-xl-8">
+                <div class="card mb-4">
+                    <div class="card-header">Account Details</div>
+                    <div class="card-body">
+                        <!-- Username -->
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputUsername">Username</label>
+                            <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username">
+                        </div>
+
+                        <!-- Name Fields -->
+                        <div class="row gx-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputFirstName">First name</label>
+                                <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputLastName">Last name</label>
+                                <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name">
+                            </div>
+                        </div>
+
+
+                        <div class="row gx-3 mb-3">
+
+                            <div class="col-md-6">
+                            <label class="small mb-1" for="inputCin">CIN</label>
+                            <input class="form-control" id="inputCin" type="text" placeholder="Entrer votre CIN" value=""required>
+                            </div>
+                            
+                            <div class="col-md-6">
+                            <label class="small mb-1" for="inputCne">CNE</label>
+                            <input class="form-control" id="inputCne" type="text" placeholder="Entrer votre CNE" value="" required>
+                            </div>
+                            </div>
+                            <div class="row gx-3 mb-3">
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputGender">Genre</label>
+                                    <select class="form-control" id="inputGender" name="gender" required>
+                                        <option value="">Votre genre</option>
+                                        <option value="male">Homme</option>
+                                        <option value="female">Femme</option>
+                                    </select>
+                                </div>
+                                
+                                
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputPhone">Phone number</label>
+                                    <input class="form-control" id="inputPhone" type="tel" placeholder="Entrer votre numéro de téléphone" value=""required>
+                                </div>
+                                </div>
+                            
+                            
+                            
+                            <div class="row gx-3 mb-3">
+                            
+                            <div class="col-md-6">
+                            <label class="small mb-1" for="inputPlace">Lieu de Naissance</label>
+                            <input class="form-control" id="inputPlace" type="tel" placeholder="Entrer votre lieu de naissance" value="" required>
+                            </div>
+                            
+                            <div class="col-md-6">
+                            <label class="small mb-1" for="inputBirthday">Date de Naissance</label>
+                            <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Entrer votre date de naissance" value=""required>
+                            </div>
+                            </div>
+                        <!-- Submit Button -->
+                        <button class="btn btn-primary" type="submit">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+
+<script>
+    document.getElementById('signOutButton').addEventListener('click', function() {
+    firebase.auth().signOut().then(function() {
+        // Sign-out successful, redirect to index.html
+        window.location.href = 'index.html';
+    }).catch(function(error) {
+        // An error happened during sign out
+        console.error("Error signing out: ", error);
+    });
+});
+    // Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyDs2gZJ6wIRDOqEtzyIT7toug3Xs3-_w1E",
+    authDomain: "user-7c7f8.firebaseapp.com",
+    projectId: "user-7c7f8",
+    storageBucket: "user-7c7f8.appspot.com",
+    messagingSenderId: "55544751979",
+    appId: "1:55544751979:web:40366cb78cb1cf8162ce2e",
+    measurementId: "G-FP9KRJ1GV3"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // User Authentication Check
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            getUserProfile(user.uid);
+        } else {
+            window.location.href = 'login.html';
+        }
+    });
+
+    // Form Submission and Image Upload
+    document.getElementById('profile-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Capture form data
+    var username = document.getElementById('inputUsername').value;
+    var firstName = document.getElementById('inputFirstName').value;
+    var lastName = document.getElementById('inputLastName').value;
+    var cin = document.getElementById('inputCin').value;
+    var cne = document.getElementById('inputCne').value;
+    var gender = document.getElementById('inputGender').value;
+    var phoneNumber = document.getElementById('inputPhone').value;
+    var birthPlace = document.getElementById('inputPlace').value;
+    var birthDate = document.getElementById('inputBirthday').value;
+
+    // Handle image file upload
+    var imageFile = document.getElementById('profile-image-input').files[0];
+    if(imageFile) {
+        uploadImageToFirebase(imageFile).then(imageURL => {
+            saveUserProfile({
+                username: username,
+                firstName: firstName,
+                lastName: lastName,
+                cin: cin,
+                cne: cne,
+                gender: gender,
+                phoneNumber: phoneNumber,
+                birthPlace: birthPlace,
+                birthDate: birthDate,
+                profileImageUrl: imageURL
+            });
+        }).catch(error => {
+            console.error("Error uploading image: ", error);
+        });
+    } else {
+        saveUserProfile({
+            username: username,
+            firstName: firstName,
+            lastName: lastName,
+            cin: cin,
+            cne: cne,
+            gender: gender,
+            phoneNumber: phoneNumber,
+            birthPlace: birthPlace,
+            birthDate: birthDate
+            // Do not update imageURL if no new image is uploaded
+        });
+    }
+});
+
+
+    // Image Upload Function
+    function uploadImageToFirebase(imageFile) {
+        return new Promise((resolve, reject) => {
+            var storageRef = firebase.storage().ref('profile_images/' + imageFile.name);
+            storageRef.put(imageFile).then(function(snapshot) {
+                snapshot.ref.getDownloadURL().then(function(url) {
+                    resolve(url);
+                });
+            }).catch(function(error) {
+                reject(error);
+            });
+        });
+    }
+
+    // Save User Profile Function
+    // Firebase initialization
+// Make sure you've initialized Firebase here
+
+// Check user authentication
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        // User is signed in
+        console.log("User is signed in.");
+        // Continue with your profile data retrieval and other logic
+    } else {
+        // No user is signed in, redirect to index.html
+        window.location.href = 'index.html';
+    }
+});
+
+function saveUserProfile(userData) {
+    var user = firebase.auth().currentUser;
+    if (user) {
+        console.log("Saving user profile for user:", user.uid); // Log for debugging
+        console.log("User data being saved:", userData); // Log the data being saved
+
+        // Using Firebase Realtime Database
+        firebase.database().ref('users/' + user.uid).set(userData)
+            .then(function() {
+                console.log("User profile saved successfully!");
+                // Here, you can implement a user feedback mechanism, e.g., display a success message
+            })
+            .catch(function(error) {
+                console.error("Error saving user data: ", error);
+                // Here, you can implement a user feedback mechanism, e.g., display an error message
+            });
+    } else {
+        console.log("No user is signed in.");
+        window.location.href = 'index.html';
+    }
+}
+
+
+
+    // Retrieve User Data on Login
+    function getUserProfile(uid) {
+    firebase.database().ref('users/' + uid).once('value').then(function(snapshot) {
+        var userData = snapshot.val();
+        if (userData) {
+            document.getElementById('inputUsername').value = userData.username || '';
+            document.getElementById('inputFirstName').value = userData.firstName || '';
+            document.getElementById('inputLastName').value = userData.lastName || '';
+            document.getElementById('inputCin').value = userData.cin || '';
+            document.getElementById('inputCne').value = userData.cne || '';
+            document.getElementById('inputGender').value = userData.gender || '';
+            document.getElementById('inputPhone').value = userData.phoneNumber || '';
+            document.getElementById('inputPlace').value = userData.birthPlace || '';
+            document.getElementById('inputBirthday').value = userData.birthDate || '';
+
+            if (userData.profileImageUrl) {
+                document.getElementById('profile-image').src = userData.profileImageUrl;
+            } else {
+                document.getElementById('profile-image').src = 'http://bootdey.com/img/Content/avatar/avatar1.png';
+            }
+        }
+    }).catch(function(error) {
+        console.log("Error getting user data:", error);
+    });
+}
+
+</script>
+</body>
+</html>

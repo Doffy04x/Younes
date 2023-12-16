@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Reset Password</title>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+
+    <!-- Font Icon and Main CSS -->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+         var firebaseConfig = {
+            apiKey: "AIzaSyDs2gZJ6wIRDOqEtzyIT7toug3Xs3-_w1E",
+    authDomain: "user-7c7f8.firebaseapp.com",
+    projectId: "user-7c7f8",
+    storageBucket: "user-7c7f8.appspot.com",
+    messagingSenderId: "55544751979",
+    appId: "1:55544751979:web:40366cb78cb1cf8162ce2e",
+    measurementId: "G-FP9KRJ1GV3"
+};
+        firebase.initializeApp(firebaseConfig);
+    </script>
+</head>
+<body>
+
+    <div class="main">
+        <!-- Sign in Form -->
+        <section class="sign-in">
+            <div class="container">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <figure><img src="images/signin-image.jpg" alt="sign up image"></figure>
+                        <a href="signup.html" class="signup-image-link">Create an account</a>
+                        <a href="index.html" class="signup-image-link">Login</a>
+                    </div>
+
+                    <div class="signin-form">
+                        <h2 class="form-title">Reset Password</h2>
+                        <form method="POST" class="register-form" id="resetForm">
+                            <div class="form-group">
+                                <label for="reset_email"><i class="zmdi zmdi-email material-icons-name"></i></label>
+                                <input type="email" name="reset_email" id="reset_email" placeholder="Your email"/>
+                            </div>
+                           
+                            <div class="form-group form-button">
+                                <input type="submit" name="reset" id="reset" class="form-submit" value="Reset"/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="messageBox" class="message-box" style="display: none;">
+        <p id="messageText"></p>
+        <button onclick="document.getElementById('messageBox').style.display='none'">Close</button>
+    </div>
+
+    <!-- Firebase Password Reset Script -->
+    <script>
+       document.getElementById('resetForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var emailAddress = document.getElementById('reset_email').value;
+    firebase.auth().sendPasswordResetEmail(emailAddress)
+        .then(function() {
+            showMessage('Check your email to reset your password.');
+        })
+        .catch(function(error) {
+            if (error.code === 'auth/user-not-found') {
+                showMessage('Email not found.');
+            } else {
+                showMessage(error.message);
+            }
+        });
+});
+
+function showMessage(message) {
+    document.getElementById('messageText').textContent = message;
+    document.getElementById('messageBox').style.display = 'block';
+}
+    </script>
+
+    <!-- External JS -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
